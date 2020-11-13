@@ -63,7 +63,6 @@ function* liveFeed(action) {
     const subscription = yield call(stream, sub);
     while(true) {
         const {data} = yield take(subscription);
-        console.log(data)
         yield fork(dataProcessor, data.newMeasurement)
     }
 }
